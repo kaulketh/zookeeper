@@ -119,18 +119,26 @@ Switching on camera from habitat with rabbits...
 (" ~----( ~   Y.  )
 It seems there will be more rabbits soon!"""
 
-# write your code here
-habitats = {
-    5: rabbit,
-    4: bat,
-    3: goose,
-    2: deer,
-    1: lion,
-    0: camel
-}
 
-end_msg = """---
-The end of the program. To check another habitat restart the watcher please.
-"""
-print(habitats.get(int(input("Which habitat # do you need?"))))
-print(end_msg)
+# write your code here
+class Zookeeper:
+    def __init__(self):
+        self.animals = [camel, lion, deer, goose, bat, rabbit]
+        self.msg_in = "Which habitat # do you need? "
+        self.command_exit = "exit"
+        self.msg_end = "See you!"
+        self.do_run = False
+
+    def go(self):
+        self.do_run = True
+        while self.do_run:
+            i = input(self.msg_in)
+            if not i == self.command_exit:
+                print(self.animals[int(i)])
+            if i == self.command_exit:
+                self.do_run = False
+        print(self.msg_end)
+
+
+if __name__ == '__main__':
+    Zookeeper().go()
